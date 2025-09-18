@@ -1,4 +1,7 @@
-package go_mysti
+//go:build !debug
+// +build !debug
+
+package assets
 
 import (
 	"embed"
@@ -8,8 +11,11 @@ import (
 
 // 嵌入所有静态资源
 //
-//go:embed assets
-var embeddedFiles embed.FS
+//go:embed static
+var staticFiles embed.FS
+
+//go:embed templates
+var templateFiles embed.FS
 
 // 创建子文件系统
 func GetAssetFS(subPath string) fs.FS {

@@ -1,0 +1,14 @@
+version: '3.8'
+services:
+  redis:
+    image: redis:6-alpine
+    container_name: redis-6
+    ports:
+      - "6379:6379"
+    volumes:
+      - ./redis-ssl/:/usr/local/etc/redis/:ro
+    command: redis-server --appendonly yes --tls-port 6379 --port 0 --tls-cert-file /usr/local/etc/redis/redis.crt --tls-key-file /usr/local/etc/redis/redis.key --tls-ca-cert-file /usr/local/etc/redis/ca.crt
+    restart: no
+volumes:
+  redis-data:
+    driver: local

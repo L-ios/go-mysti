@@ -83,7 +83,7 @@ func main() {
 		},
 	})
 	// 设置模板引擎
-	tmpl := template.Must(mysti.WalkDir("assets/templates"))
+	tmpl := template.Must(mysti.BuildTemplate("assets/templates"))
 	ginEngine.SetHTMLTemplate(tmpl)
 
 	// 设置静态文件服务，主要用于返回css,js文件，html文件只能返回/static/index.html
@@ -92,6 +92,7 @@ func main() {
 	ginEngine.StaticFS("/static", assetFS)
 
 	controllers.RegisterRoutes(db, ginEngine.Group("/"))
+	controllers.RegisterKubeRoutes(ginEngine.Group("/kube"))
 
 	ginEngine.Run(":8080")
 }

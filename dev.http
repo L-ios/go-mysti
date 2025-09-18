@@ -1,0 +1,9 @@
+### GET request to example server
+GET https://examples.http-client.intellij.net/get
+    ?generated-in=GoLand
+
+###
+
+PROPFIND http://www.asusrouter.com:5244/dav/
+Authorization: Basic YWRtaW46cGFzc3dvcmQ=
+Depth: 1
